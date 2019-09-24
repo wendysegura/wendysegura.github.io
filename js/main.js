@@ -45,7 +45,23 @@ $(document).ready(function() {
       });
     }
   }
+  
+  // ========================================================================= //
+  //  //NAVBAR SHOW - HIDE
+  // ========================================================================= //
 
+
+  $(window).scroll(function() {
+    var scroll = $(window).scrollTop();
+    if (scroll > 100 ) {
+      $("#main-nav, #main-nav-subpage").slideDown(700);
+      $("#main-nav-subpage").removeClass('subpage-nav');
+    } else {
+      $("#main-nav").slideUp(700);
+      $("#main-nav-subpage").hide();
+      $("#main-nav-subpage").addClass('subpage-nav');
+    }
+  });
 
 
   // ========================================================================= //
