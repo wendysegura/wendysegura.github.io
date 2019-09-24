@@ -53,11 +53,11 @@ $(document).ready(function() {
 
   $(window).scroll(function() {
     var scroll = $(window).scrollTop();
-    if (scroll > 75 ) {
-      $("#main-nav, #main-nav-subpage").slideDown(50);
+    if (scroll > 0 ) {
+      $("#main-nav, #main-nav-subpage").slideDown(0);
       $("#main-nav-subpage").removeClass('subpage-nav');
     } else {
-      $("#main-nav").slideUp(50);
+      $("#main-nav").slideUp(0);
       $("#main-nav-subpage").hide();
       $("#main-nav-subpage").addClass('subpage-nav');
     }
