@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hard Link vs Symbolic Link</title>
+
+<!-- Basic readable styling -->
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 900px;
+        margin: auto;
+        padding: 20px;
+    }
+    h1, h2, h3 {
+        color: #333;
+        margin-top: 25px;
+    }
+    code {
+        background: #f4f4f4;
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+    pre {
+        background: #f4f4f4;
+        padding: 10px;
+        overflow-x: auto;
+        border-radius: 4px;
+    }
+    img {
+        max-width: 100%;
+        border: 1px solid #ccc;
+        margin-top: 10px;
+    }
+    blockquote {
+        background: #f9f9f9;
+        border-left: 4px solid #ccc;
+        padding: 10px 20px;
+        margin: 20px 0;
+        font-style: italic;
+    }
+    ul {
+        margin-top: 10px;
+    }
+</style>
+
+</head>
+<body>
+
+<h1>What is the Difference Between a Hard Link and a Symbolic Link?</h1>
+
+<p>Hello there again. In this introduction to hard links and symbolic links, we will first try to learn and define what each one means. Then we will discuss what the differences between the two are.</p>
+
+<h2>Hard Link Definition:</h2>
+
+<p>
+A hard link is merely an additional name for an existing file on Linux or other Unix-like operating systems.
+Any number of hard links, and thus any number of names, can be created for any file. Hard links can also be 
+created to other hard links. However, they cannot be created for directories, and they cannot cross filesystem 
+boundaries or span across partitions.
+</p>
+
+<p>
+Perhaps the most useful application for hard links is to allow files, programs, and scripts to be easily accessed 
+in a different directory from the original file. Typing the name of the hard link will cause the program or 
+script to be executed the same way as using its original name.
+</p>
+
+<p><strong>Creating a hard link example:</strong></p>
+
+<img src="https://github.com/user-attachments/assets/0a833afd-90c7-4e09-9c35-95ea84c62f9c" alt="Hard link example">
+
+<p>
+Now let’s run <code>ls -i</code> to list all files with their inode numbers.
+</p>
+
+<h3>INODE Definition:</h3>
+
+<p>
+The inode is a data structure in a Unix-style file system describing a filesystem object such as a file or 
+directory. Each inode stores metadata and the disk block locations of the object’s data.
+</p>
+
+<img src="https://github.com/user-attachments/assets/83167ae5-7264-45da-83a0-63de3f7e9407" alt="inode example">
+
+<p>
+If you look at <strong>file1</strong> and <strong>hlink1</strong>, they share the same inode. Hard links are literally 
+additional directory entries pointing to the same underlying inode.
+</p>
+
+<h2>Soft Links (Symbolic Links)</h2>
+
+<p>
+A symbolic (soft) link is a special kind of file that points to another file, similar to a shortcut. Unlike 
+hard links, symbolic links do <em>not</em> contain the data of the target file — they simply reference another 
+path in the filesystem.
+</p>
+
+<p>Soft links:</p>
+<ul>
+<li>Can link to directories</li>
+<li>Can link across filesystems</li>
+<li>Break when the target is deleted</li>
+</ul>
+
+<p><strong>Creating a soft link example:</strong></p>
+
+<img src="https://github.com/user-attachments/assets/c1d0b78c-0c9e-4072-8b19-42c6d0d37a8e" alt="Soft link example">
+
+<p>Now running <code>ls -i</code>:</p>
+
+<img src="https://github.com/user-attachments/assets/5b56e757-2df6-45fa-b866-262354d86950" alt="inode soft link">
+
+<p>
+Notice that only the hardlink file shares the same inode as the original file. Soft links always have different inodes.
+</p>
+
+<h2>Summary: Differences Between Hard and Soft Links</h2>
+
+<ul>
+<li>A soft link does not contain the data in the target file.</li>
+<li>A soft link can point to directories or remote filesystem paths.</li>
+<li>Deleting the target of a soft link breaks the link.</li>
+<li>A hard link preserves the contents of the file.</li>
+<li>A hard link cannot cross filesystem boundaries.</li>
+<li>A hard link references the same inode as the original file.</li>
+</ul>
+
+<h3>In essence:</h3>
+
+<blockquote>
+Underneath the file system, files are represented by inodes.  
+A file in the file system is basically a link to an inode.  
+A hard link creates another name pointing to the same inode.  
+The inode is only deleted when the last link to it is removed.  
+A symbolic link is a link to a file name, not to the inode.  
+Changing or deleting the original file breaks the symbolic link.
+</blockquote>
+
+<h3>Examining the Shell and How It Executes a Command</h3>
+
+<ul>
+<li>The shell reads input from a file, string, or terminal.</li>
+<li>Input is broken into tokens.</li>
+<li>Alias expansion occurs.</li>
+<li>The shell parses and expands commands.</li>
+<li>Redirection occurs if needed.</li>
+<li>Commands are executed.</li>
+<li>The shell optionally waits for command completion.</li>
+</ul>
+
+<img src="https://github.com/user-attachments/assets/ae562048-df92-4201-9260-4c868ab076f1" alt="shell execution">
+
+<p><small>Original publication on Medium:  
+<a href="https://medium.com/@wendymayorgasegura/what-is-the-difference-between-a-hard-link-and-a-symbolic-link-8c0493041b62" target="_blank">
+Click here
+</a></small></p>
+
+</body>
+</html>
