@@ -74,30 +74,34 @@ In a hardlink you can use any of the hardlink names created to execute a program
 ### In essence:
 >
 > “Underneath the file system files are represented by inodes
-
+>
 > A file in the file system is basically a link to an inode.
 > A hard link then just creates another file with a link to the same underlying inode.
-
+>
 > When you delete a file it removes one link to the underlying inode. The inode is only deleted (or deletable/over-writable) when all links to the inode have been deleted.
-
+>
 > A symbolic link is a link to another name in the file system.
-
+>
 > Once a hard link has been made the link is to the inode. deleting renaming or moving the original file will not affect the hard link as it links to the underlying inode. Any changes to the data on the inode is reflected in all files that refer to that inode."
 
-   ### Note: Hard links are only valid within the same File System. Symbolic links can span file systems as they are simply the name of another file.”
+   ## Note: Hard links are only valid within the same File System. Symbolic links can span file systems as they are simply the name of another file.
 
     (http://stackoverflow.com/questions/185899/what-is-the-difference-between-a-symbolic-link-and-a-hard-link)
 
 ### Examining the Shell and how it executes a command
 
-    - The shell reads its input from a file, from a string or from the user’s terminal.
-    - Input is broken up into words and operators, obeying the quoting rules. These tokens are separated by metacharacters. Alias expansion is performed.
-    - The shell parses (analyzes and substitutes) the tokens into simple and compound commands.
-    - The shell performs various shell expansions, breaking the expanded tokens into lists of filenames and commands and arguments.
-    - Redirection is performed if necessary, redirection operators and their operands are removed from the argument list.
-    - Commands are executed.
-    - Optionally the shell waits for the command to complete and collects its exit status.
+- The shell reads its input from a file, from a string or from the user’s terminal.
+- Input is broken up into words and operators, obeying the quoting rules. These tokens are separated by metacharacters. Alias          expansion is performed.
+- The shell parses (analyzes and substitutes) the tokens into simple and compound commands.
+- The shell performs various shell expansions, breaking the expanded tokens into lists of filenames and commands and arguments.
+- Redirection is performed if necessary, redirection operators and their operands are removed from the argument list.
+- Commands are executed.
+- Optionally the shell waits for the command to complete and collects its exit status.
 
-    <img width="444" height="443" alt="image" src="https://github.com/user-attachments/assets/5bb9f6d5-7c3e-44d5-8462-465a29a28b4d" />
 
+  <img width="444" height="443" alt="image" src="https://github.com/user-attachments/assets/ae562048-df92-4201-9260-4c868ab076f1"/>
+
+
+    
+Original publication in Medium: https://medium.com/@wendymayorgasegura/what-is-the-difference-between-a-hard-link-and-a-symbolic-link-8c0493041b62
 
