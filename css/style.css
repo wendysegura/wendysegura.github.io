@@ -493,7 +493,18 @@ nav ul li a {
 .credits {
   font-size: 13px;
 }
+/* Footer avatar image */
+#footer .footer-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 15px auto;
+}
+
 ------------------------------------------------------------->
+
 
 
 
