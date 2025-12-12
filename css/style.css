@@ -492,18 +492,31 @@ nav ul li a {
 
 .credits {
   font-size: 13px;
+
+/* Author badge under article */
+.author-badge {
+  text-align: center;
+  margin-top: 30px;
 }
-/* Footer avatar image */
-#footer .footer-avatar {
+
+.author-badge img {
   width: 64px;
   height: 64px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
-  margin: 0 auto 15px auto;
+  margin: 0 auto 10px auto;
+}
+
+.author-badge p {
+  margin: 0;
+  font-size: 13px;
+  color: #999;
+  line-height: 20px;
 }
 
 ------------------------------------------------------------->
+
 
 
 
