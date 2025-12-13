@@ -1,4 +1,4 @@
-/*global $, jQuery*/
+/*global $, jQuery, Typed*/
 $(document).ready(function () {
   'use strict';
 
@@ -11,12 +11,12 @@ $(document).ready(function () {
   $('a[href^="#"]').on('click', function (e) {
     var hash = this.hash;
 
-    // 🚫 Ignore empty or placeholder hashes
+    // Ignore empty or placeholder hashes
     if (!hash || hash === '#') {
       return;
     }
 
-    // 🚫 Ignore if target does not exist
+    // Ignore if target does not exist
     if ($(hash).length === 0) {
       return;
     }
@@ -33,9 +33,7 @@ $(document).ready(function () {
     $(this).addClass('active');
 
     $('html, body').stop().animate(
-      {
-        scrollTop: $(hash).offset().top - 80
-      },
+      { scrollTop: $(hash).offset().top - 80 },
       500,
       'swing',
       function () {
@@ -86,7 +84,7 @@ $(document).ready(function () {
   //  TYPED JS (SAFE INIT)
   // ========================================================================= //
 
-  if ($('.typed').length) {
+  if ($('.typed').length && typeof Typed !== 'undefined') {
     new Typed('.typed', {
       strings: ["Wendy Segura.", "A Breaker.", "A Maker.", "A Disrupter."],
       typeSpeed: 100,
@@ -114,15 +112,21 @@ $(document).ready(function () {
   }
 
   // ========================================================================= //
-  //  PORTFOLIO ISOTOPE + FILTER (FIXED)
+  //  PORTFOLIO ISOTOPE + FILTER (BOOTSTRAP CARDS FIX)
   // ========================================================================= //
 
   var $portfolioContainer = $('.portfolio-container');
 
   if ($portfolioContainer.length) {
+    // ✅ Use .portfolio-item (your new card wrapper class)
     var portfolioIsotope = $portfolioContainer.isotope({
-      itemSelector: '.portfolio-thumbnail',
+      itemSelector: '.portfolio-item',
       layoutMode: 'fitRows'
+    });
+
+    // ✅ Ensure layout happens after images/videos load
+    $portfolioContainer.imagesLoaded(function () {
+      portfolioIsotope.isotope('layout');
     });
 
     $('#portfolio-flters li').on('click', function () {
@@ -143,9 +147,7 @@ $(document).ready(function () {
       type: 'image',
       removalDelay: 300,
       mainClass: 'mfp-with-zoom',
-      gallery: {
-        enabled: true
-      },
+      gallery: { enabled: true },
       zoom: {
         enabled: true,
         duration: 300,
