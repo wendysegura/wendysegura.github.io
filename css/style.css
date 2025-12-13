@@ -491,56 +491,10 @@ nav ul li a {
   font-size: 13px;
 }
 
-/* --- Portfolio: uniform tiles WITHOUT changing the site look --- */
-.portfolio-thumbnail{
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 0;            /* keep your original look */
-  background: transparent;
-  border-radius: 0;
-  box-shadow: none;
-}
-
-/* Reset spacing ONLY inside portfolio tiles (your global p margin is huge) */
-.portfolio-thumbnail p{
-  margin: 10px 0;
-  line-height: 22px;
-}
-
-/* Title */
-.portfolio-thumbnail > p:first-child{
-  margin-top: 0;
-  font-weight: 600;
-  color: #292929;
-}
-
-/* Make images + videos uniform without hard-cropping height */
-.portfolio-thumbnail img,
-.portfolio-thumbnail video{
-  width: 100% !important;
-  aspect-ratio: 4 / 3;   /* consistent shape */
-  height: auto !important;
-  object-fit: cover;
-  display: block;
-}
-
-/* Clamp description (keeps tile heights consistent) */
-.portfolio-thumbnail > p:nth-of-type(2){
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
-  overflow: hidden;
-  min-height: calc(22px * 4); /* reserve same space even if shorter */
-}
-
-/* Keep CTA aligned at bottom */
-.portfolio-thumbnail > p:last-child{
-  margin-top: auto;
-}
 
 
 ------------------------------------------------------------->
+
 
 
 
