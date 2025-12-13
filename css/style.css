@@ -493,6 +493,68 @@ nav ul li a {
 .credits {
   font-size: 13px;
 }
+
+/* --- Portfolio: make project cards uniform --- */
+.portfolio-thumbnail{
+  /* card sizing */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 14px;
+
+  /* optional: subtle card look */
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 10px rgba(0,0,0,.06);
+}
+
+/* Title (your first <p>) */
+.portfolio-thumbnail > p:first-child{
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+
+/* Make img + video consistent */
+.portfolio-thumbnail img,
+.portfolio-thumbnail video{
+  width: 100% !important;
+  height: 220px !important;     /* pick a single height */
+  object-fit: cover;            /* fills without distortion */
+  border-radius: 10px;
+  display: block;
+  margin: 0 0 10px;
+}
+
+/* Keep descriptions from making cards wildly different heights */
+.portfolio-thumbnail > p:nth-of-type(2){
+  margin: 0 0 10px;
+  line-height: 1.35;
+
+  /* clamp to 4 lines */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+
+  /* ensures equal reserved space even if shorter */
+  min-height: calc(1.35em * 4);
+}
+
+/* Push the last paragraph (your link / “Click play…”) to the bottom */
+.portfolio-thumbnail > p:last-child{
+  margin-top: auto;
+}
+
+/* Optional: make CTA look like a button but keep structure */
+.portfolio-thumbnail > p:last-child a{
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,.15);
+  text-decoration: none;
+}
+
 ------------------------------------------------------------->
+
 
 
