@@ -125,9 +125,6 @@ $(document).ready(function () {
     });
 
     // ✅ Ensure layout happens after images/videos load
-    $portfolioContainer.imagesLoaded(function () {
-      portfolioIsotope.isotope('layout');
-    });
 
     $('#portfolio-flters li').on('click', function () {
       $('#portfolio-flters li').removeClass('filter-active');
@@ -138,6 +135,8 @@ $(document).ready(function () {
     });
   }
 
+
+  
   // ========================================================================= //
   //  MAGNIFIC POPUP (SAFE INIT)
   // ========================================================================= //
@@ -162,3 +161,4 @@ $(document).ready(function () {
   }
 
 });
+
