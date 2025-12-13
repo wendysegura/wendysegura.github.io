@@ -1,164 +1,154 @@
-/*global $, jQuery, Typed*/
-$(document).ready(function () {
+/*global $, jQuery, alert*/
+$(document).ready(function() {
+
   'use strict';
 
   // ========================================================================= //
-  //  SMOOTH SCROLL (FIXED)
+  //  //SMOOTH SCROLL
   // ========================================================================= //
+
 
   $(document).on("scroll", onScroll);
 
-  $('a[href^="#"]').on('click', function (e) {
-    var hash = this.hash;
-
-    // Ignore empty or placeholder hashes
-    if (!hash || hash === '#') {
-      return;
-    }
-
-    // Ignore if target does not exist
-    if ($(hash).length === 0) {
-      return;
-    }
-
+  $('a[href^="#"]').on('click', function(e) {
     e.preventDefault();
     $(document).off("scroll");
 
-    $('a').removeClass('active');
-
-    if ($(window).width() < 768) {
-      $('.nav-menu').slideUp();
-    }
+    $('a').each(function() {
+      $(this).removeClass('active');
+      if ($(window).width() < 768) {
+        $('.nav-menu').slideUp();
+      }
+    });
 
     $(this).addClass('active');
 
-    $('html, body').stop().animate(
-      { scrollTop: $(hash).offset().top - 80 },
-      500,
-      'swing',
-      function () {
-        window.location.hash = hash;
-        $(document).on("scroll", onScroll);
-      }
-    );
+    var target = this.hash,
+        menu = target;
+
+    target = $(target);
+    $('html, body').stop().animate({
+      'scrollTop': target.offset().top - 80
+    }, 500, 'swing', function() {
+      window.location.hash = target.selector;
+      $(document).on("scroll", onScroll);
+    });
   });
 
-  function onScroll() {
-    var scrollPos = $(document).scrollTop();
 
-    $('nav ul li a[href^="#"]').each(function () {
-      var currLink = $(this);
-      var refElement = $(currLink.attr("href"));
-
-      if (
-        refElement.length &&
-        refElement.position().top - 90 <= scrollPos &&
-        refElement.position().top + refElement.height() > scrollPos
-      ) {
-        $('nav ul li a').removeClass("active");
-        currLink.addClass("active");
-      }
-    });
+  function onScroll(event) {
+    if ($('.home').length) {
+      var scrollPos = $(document).scrollTop();
+      $('nav ul li a').each(function() {
+        var currLink = $(this);
+        var refElement = $(currLink.attr("href"));
+      });
+    }
   }
-
+  
   // ========================================================================= //
-  //  NAVBAR SHOW / HIDE
+  //  //NAVBAR SHOW - HIDE
   // ========================================================================= //
 
-  $(window).scroll(function () {
-    if ($(window).scrollTop() > 0) {
+
+  $(window).scroll(function() {
+    var scroll = $(window).scrollTop();
+    if (scroll > 0 ) {
       $("#main-nav, #main-nav-subpage").slideDown(0);
       $("#main-nav-subpage").removeClass('subpage-nav');
-    }
+    } 
   });
 
+
   // ========================================================================= //
-  //  RESPONSIVE MENU
+  //  // RESPONSIVE MENU
   // ========================================================================= //
 
-  $('.responsive').on('click', function () {
+  $('.responsive').on('click', function(e) {
     $('.nav-menu').slideToggle();
   });
 
   // ========================================================================= //
-  //  TYPED JS (SAFE INIT)
+  //  Typed Js
   // ========================================================================= //
 
-  if ($('.typed').length && typeof Typed !== 'undefined') {
-    new Typed('.typed', {
+  var typed = $(".typed");
+
+  $(function() {
+    typed.typed({
       strings: ["Wendy Segura.", "A Breaker.", "A Maker.", "A Disrupter."],
       typeSpeed: 100,
-      loop: true
+      loop: true,
     });
-  }
+  });
+
 
   // ========================================================================= //
-  //  OWL CAROUSEL
+  //  Owl Carousel Services
   // ========================================================================= //
 
-  if ($('.services-carousel').length) {
-    $('.services-carousel').owlCarousel({
+
+  $('.services-carousel').owlCarousel({
       autoplay: true,
       loop: true,
       margin: 20,
       dots: true,
       nav: false,
-      responsive: {
-        0: { items: 1 },
-        768: { items: 2 },
-        900: { items: 4 }
-      }
-    });
-  }
-
-  // ========================================================================= //
-  //  PORTFOLIO ISOTOPE + FILTER (BOOTSTRAP CARDS FIX)
-  // ========================================================================= //
-
-  var $portfolioContainer = $('.portfolio-container');
-
-  if ($portfolioContainer.length) {
-    // ✅ Use .portfolio-item (your new card wrapper class)
-    var portfolioIsotope = $portfolioContainer.isotope({
-      itemSelector: '.portfolio-item',
-      layoutMode: 'fitRows'
+      responsiveClass: true,
+      responsive: { 0: { items: 1 }, 768: { items: 2 }, 900: { items: 4 } }
     });
 
-    // ✅ Ensure layout happens after images/videos load
 
-    $('#portfolio-flters li').on('click', function () {
-      $('#portfolio-flters li').removeClass('filter-active');
-      $(this).addClass('filter-active');
-
-      var filterValue = $(this).data('filter') || '*';
-      portfolioIsotope.isotope({ filter: filterValue });
-    });
-  }
-
-
-  
   // ========================================================================= //
-  //  MAGNIFIC POPUP (SAFE INIT)
+  //  Porfolio isotope and filter
   // ========================================================================= //
 
-  if ($('.popup-img').length) {
+
+  var portfolioIsotope = $('.portfolio-container').isotope({
+    itemSelector: '.portfolio-thumbnail',
+    layoutMode: 'fitRows'
+  });
+
+  $('#portfolio-flters li').on( 'click', function() {
+    $("#portfolio-flters li").removeClass('filter-active');
+    $(this).addClass('filter-active');
+
+    portfolioIsotope.isotope({ filter: $(this).data('filter') });
+  });
+
+
+  // ========================================================================= //
+  //  magnificPopup
+  // ========================================================================= //
+
+  var magnifPopup = function() {
     $('.popup-img').magnificPopup({
       type: 'image',
       removalDelay: 300,
       mainClass: 'mfp-with-zoom',
-      gallery: { enabled: true },
+      gallery: {
+        enabled: true
+      },
       zoom: {
-        enabled: true,
-        duration: 300,
-        easing: 'ease-in-out',
-        opener: function (openerElement) {
-          return openerElement.is('img')
-            ? openerElement
-            : openerElement.find('img');
+        enabled: true, // By default it's false, so don't forget to enable it
+
+        duration: 300, // duration of the effect, in milliseconds
+        easing: 'ease-in-out', // CSS transition easing function
+
+        // The "opener" function should return the element from which popup will be zoomed in
+        // and to which popup will be scaled down
+        // By defailt it looks for an image tag:
+        opener: function(openerElement) {
+          // openerElement is the element on which popup was initialized, in this case its <a> tag
+          // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+          return openerElement.is('img') ? openerElement : openerElement.find('img');
         }
       }
     });
-  }
+  };
+
+
+  // Call the functions
+  magnifPopup();
 
 });
-
