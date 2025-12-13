@@ -1,87 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Launching a Tenable Nessus Scan on an EC2</title>
-<p>Original publication: 
-  <a href="https://web.archive.org/web/20231004111740/https://sweetcode.io/launch-tenable-nessus-scan-ec2/" 
-     target="_blank" 
-     rel="noopener noreferrer">
-    View on Sweetcode (Archived)
-  </a>
-</p>
-<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600|Playfair+Display:400,700,900" rel="stylesheet">
-<style>
-  body { font-family: 'Poppins', sans-serif; padding: 20px; line-height: 1.6; color: #333; }
-  h1, h2, h3 { font-family: 'Playfair Display', serif; }
-  h1 { font-size: 32px; margin-bottom: 10px; }
-  h2 { font-size: 24px; margin-top: 30px; }
-  h3 { font-size: 20px; margin-top: 20px; }
-  pre { background: #f4f4f4; padding: 10px; overflow-x: auto; border-left: 4px solid #555; }
-  code { font-family: monospace; }
-  a { color: #007bff; text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  p { margin-bottom: 15px; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Launching a Tenable Nessus Scan on an EC2</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600|Playfair+Display:400,700,900" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      padding: 20px;
+      line-height: 1.6;
+      color: #333;
+      background: #fff;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-top: 30px;
+    }
+
+    h3 {
+      font-size: 20px;
+      margin-top: 20px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    pre {
+      background: #f4f4f4;
+      padding: 12px;
+      overflow-x: auto;
+      border-left: 4px solid #555;
+      margin: 20px 0;
+    }
+
+    code {
+      font-family: monospace;
+    }
+
+    /* Article images */
+    .logo-image {
+      width: 180px;
+      display: block;
+      margin: 0 auto 20px auto;
+    }
+
+    .header-image {
+      width: 100%;
+      height: auto;
+      margin: 20px 0 30px 0;
+      border-radius: 4px;
+    }
+
+    /* Original publication */
+    .original-publication {
+      text-align: center;
+      font-size: 0.9em;
+      margin-bottom: 30px;
+    }
+
+    .original-publication a {
+      font-weight: 500;
+    }
+  </style>
 </head>
+
 <body>
 
-<h1>Launching a Tenable Nessus Scan on an EC2</h1>
-<p><strong>by Wendy Segura</strong></p>
-<p><em>5 years ago | In IT Infrastructure | Python</em></p>
+  <!-- Sweetcode Logo -->
+  <img
+    src="/images/Sweetcode-gray-shadow.png"
+    alt="Sweetcode Logo"
+    class="logo-image"
+  >
 
-<p>Tenable Nessus is a network vulnerability scanner, and you use it to scan your assets to expose common vulnerabilities and misconfigurations. In this post, I will talk about how to use Nessus on EC2.</p>
+  <!-- Header Image -->
+  <img
+    src="/images/launching-tenable-nessus-ec2.png"
+    alt="Launching a Tenable Nessus Scan on an EC2"
+    class="header-image"
+  >
 
-<h2>Tools Required</h2>
-<p>The tools we will be using are the Tenable Python SDK, AWS Python SDK, and Boto3 to launch a scan on AWS EC2. The first thing we need is our target — in this case, AWS EC2’s IP address is needed to use them as targets for the scan.</p>
+  <!-- Original Publication -->
+  <div class="original-publication">
+    <p>
+      Original publication:
+      <a href="https://web.archive.org/web/20231004111740/https://sweetcode.io/launch-tenable-nessus-scan-ec2/"
+         target="_blank"
+         rel="noopener noreferrer">
+        View on Sweetcode (Archived)
+      </a>
+    </p>
+  </div>
 
-<p>Since we are utilizing the AWS Python SDK, the first step is to connect to your AWS account, from which we will retrieve the EC2 IP addresses. You can use as many targets as you want, but for this example, I will take a random set of 5 EC2 targets.</p>
+  <h1>Launching a Tenable Nessus Scan on an EC2</h1>
+  <p><strong>by Wendy Segura</strong></p>
+  <p><em>5 years ago | In IT Infrastructure | Python</em></p>
 
-<p>Before jumping into the code, ensure you have installed Boto3 and have access to the AWS CLI:</p>
-<ul>
-<li><a href="#">Installing the AWS CLI</a></li>
-<li><a href="#">BOTO3 Configuration</a></li>
-</ul>
+  <p>
+    Tenable Nessus is a network vulnerability scanner, and you use it to scan your assets
+    to expose common vulnerabilities and misconfigurations. In this post, I will talk
+    about how to use Nessus on EC2.
+  </p>
 
-<h2>Connecting to AWS EC2</h2>
-<pre><code>import boto3
+  <h2>Tools Required</h2>
+  <p>
+    The tools we will be using are the Tenable Python SDK, AWS Python SDK, and Boto3 to
+    launch a scan on AWS EC2. The first thing we need is our target — in this case,
+    AWS EC2’s IP address is needed to use them as targets for the scan.
+  </p>
+
+  <p>
+    Since we are utilizing the AWS Python SDK, the first step is to connect to your AWS
+    account, from which we will retrieve the EC2 IP addresses. You can use as many targets
+    as you want, but for this example, I will take a random set of 5 EC2 targets.
+  </p>
+
+  <p>
+    Before jumping into the code, ensure you have installed Boto3 and have access to the
+    AWS CLI:
+  </p>
+
+  <ul>
+    <li><a href="#">Installing the AWS CLI</a></li>
+    <li><a href="#">BOTO3 Configuration</a></li>
+  </ul>
+
+  <h2>Connecting to AWS EC2</h2>
+  <pre><code>import boto3
 import random
 import datetime
 
 def ec2_connect():
-    ec2 = boto3.resources('ec2')
-    instances = ec2.instances.filter(Filters=[{'Name': 'instance-state-name', 'Values': ['running']}])
+    ec2 = boto3.resource('ec2')
+    instances = ec2.instances.filter(
+        Filters=[{'Name': 'instance-state-name', 'Values': ['running']}]
+    )
     return instances
 </code></pre>
 
-<p>Now filter instances and get a random sample of 5 public IP addresses:</p>
+  <p>Now filter instances and get a random sample of 5 public IP addresses:</p>
 
-<pre><code>def filter_ec2_instance(ec2_connect):
-    public_ips = [each_instance.public_ip_address for each_instance in ec2_connect]
-    return random.sample((public_ips), 5)
+  <pre><code>def filter_ec2_instance(ec2_connect):
+    public_ips = [
+        each_instance.public_ip_address
+        for each_instance in ec2_connect
+        if each_instance.public_ip_address
+    ]
+    return random.sample(public_ips, 5)
 </code></pre>
 
-<p>Create a target list for the Tenable scan:</p>
-<pre><code>def target_list(filter_ec2_instance):
-    target = []
-    target = ','.join(filter_ec2_instance)
-    return target
+  <p>Create a target list for the Tenable scan:</p>
+
+  <pre><code>def target_list(filter_ec2_instance):
+    return ','.join(filter_ec2_instance)
 </code></pre>
 
-<h2>Tenable Scan Setup</h2>
-<p>Generate your Tenable API access and secret key before proceeding.</p>
+  <h2>Tenable Scan Setup</h2>
+  <p>Generate your Tenable API access and secret key before proceeding.</p>
 
-<pre><code>import argparse
+  <pre><code>import argparse
 import os
-from datetime import datetime
-from tenable_io.api.models import Scan
-from tenable_io.api.scans import ScanExportRequest
+import time
 from tenable_io.client import TenableIOClient
-from tenable_io.exceptions import TenableIOApiException, TenableIOException
-from time import time
 
-parser = argparse.ArgumentParser(description='configuration of Nessus Tenable account')
+parser = argparse.ArgumentParser(
+    description='configuration of Nessus Tenable account'
+)
 parser.add_argument('-a', '--tenable_key', required=True, help='access key')
 parser.add_argument('-k', '--tenable_secret', required=True, help='secret key')
 
@@ -90,45 +200,75 @@ tenable_key = args.tenable_key
 tenable_secret = args.tenable_secret
 </code></pre>
 
-<p>Connect to the Tenable client:</p>
-<pre><code>def tenable_client():
+  <p>Connect to the Tenable client:</p>
+
+  <pre><code>def tenable_client():
     return TenableIOClient(tenable_key, tenable_secret)
 </code></pre>
 
-<p>Create and launch the scan:</p>
-<pre><code>def create_scan(tenable_client):
+  <p>Create and launch the scan:</p>
+
+  <pre><code>def create_scan(tenable_client):
     timestr = time.strftime("%Y%m%d-%H%M%S")
-    scan_name = u"scanjob_" + timestr
-    scan = tenable_client().scan_helper.create(name=scan_name, text_targets='target_list', template='basic')
+    scan_name = f"scanjob_{timestr}"
+    scan = tenable_client().scan_helper.create(
+        name=scan_name,
+        text_targets='target_list',
+        template='basic'
+    )
     return scan
 
 def launch_scan(create_scan):
-    create_scan.launch().download('/path/to/your/scan_name.pdf')
-    first_scan_id = min([int(history.history_id) for history in create_scan.histories()])
-    assert os.path.isfile('/path/to/your/scan_name.pdf')
-    return '/path/to/your/scan_name.pdf'
+    output_path = f"/path/to/{create_scan.name}.pdf"
+    create_scan.launch().download(output_path)
+    assert os.path.isfile(output_path)
+    return output_path
 </code></pre>
 
-<p>Execution:</p>
-<pre><code>def main():
-    generate_tennable_target_list(filter_ec2_instance(ec2_connect()))
-    launch_scan(create_scan(tenable_client()))
+  <p>Execution:</p>
+
+  <pre><code>def main():
+    targets = filter_ec2_instance(ec2_connect())
+    scan = create_scan(tenable_client())
+    launch_scan(scan)
 
 if __name__ == '__main__':
     main()
 </code></pre>
 
-<p>Save this script and run it with your Tenable keys:</p>
-<pre><code>./name_of_your_file –a [Tenable Access Key] –k [Tenable Secret Key]</code></pre>
+  <p>
+    Save this script and run it with your Tenable keys:
+  </p>
 
-<p>The generated scan report will appear in your specified path and in the Tenable console. You can also adapt the script for email notifications or AWS Lambda automation.</p>
+  <pre><code>./script_name.py -a [Tenable Access Key] -k [Tenable Secret Key]</code></pre>
 
-<h2>Additional Resources</h2>
-<ul>
-<li><a href="#">Tenable.io SDK Python examples</a></li>
-<li><a href="#">Tenable API Documentation</a></li>
-</ul>
+  <p>
+    The generated scan report will appear in your specified path and in the Tenable
+    console. You can also adapt the script for email notifications or AWS Lambda automation.
+  </p>
 
-<p>Original Author: Wendy Segura</p>
+  <h2>Additional Resources</h2>
+  <ul>
+    <li><a href="#">Tenable.io SDK Python examples</a></li>
+    <li><a href="#">Tenable API Documentation</a></li>
+  </ul>
+
+  <!-- Original Publication -->
+  <div class="original-publication">
+    <p>
+      Original publication: 
+      <a href="https://web.archive.org/web/20231004111740/https://sweetcode.io/launch-tenable-nessus-scan-ec2/" target="_blank" rel="noopener noreferrer">
+        View on Sweetcode (Archived)
+      </a>
+    </p>
+  </div>
+  <div class="author-badge">
+    <img src="/images/avatar.png" alt="Wendy Segura">
+    <p><strong>Wendy Segura</strong></p>
+    <p>Security Engineer · Writer · Cybersecurity</p>
+  </div>
+
+</div>
+
 </body>
 </html>
