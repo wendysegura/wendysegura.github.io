@@ -376,28 +376,6 @@ nav ul li a {
 .portfolio-thumbnail img {
   max-width: 100%;
 }
-/* Portfolio Cards (Bootstrap) */
-#portfolio .portfolio-container .card {
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-#portfolio .portfolio-container .card-img-top {
-  height: 220px;
-  object-fit: cover;
-}
-
-#portfolio .portfolio-container .card-title {
-  color: #292929;
-  font-weight: 600;
-}
-
-#portfolio .portfolio-container .card-text {
-  font-size: 14px;
-  line-height: 1.45;
-  color: #999999;
-}
-
 
 /*-----------------------------------------------------------------------------------*/
 /*  Contact
@@ -514,33 +492,7 @@ nav ul li a {
 
 .credits {
   font-size: 13px;
-
-/* Author badge under article */
-.author-badge {
-  text-align: center;
-  margin-top: 30px;
 }
-
-.author-badge img {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-  margin: 0 auto 10px auto;
-}
-
-.author-badge p {
-  margin: 0;
-  font-size: 13px;
-  color: #999;
-  line-height: 20px;
-}
-
 ------------------------------------------------------------->
-
-
-
-
 
 
