@@ -376,6 +376,28 @@ nav ul li a {
 .portfolio-thumbnail img {
   max-width: 100%;
 }
+/* Portfolio Cards (Bootstrap) */
+#portfolio .portfolio-container .card {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+#portfolio .portfolio-container .card-img-top {
+  height: 220px;
+  object-fit: cover;
+}
+
+#portfolio .portfolio-container .card-title {
+  color: #292929;
+  font-weight: 600;
+}
+
+#portfolio .portfolio-container .card-text {
+  font-size: 14px;
+  line-height: 1.45;
+  color: #999999;
+}
+
 
 /*-----------------------------------------------------------------------------------*/
 /*  Contact
@@ -516,6 +538,7 @@ nav ul li a {
 }
 
 ------------------------------------------------------------->
+
 
 
 
