@@ -1,7 +1,5 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <!-- meta -->
   <meta charset="utf-8">
@@ -32,7 +30,6 @@
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="images/favicon.png">
-
 </head>
 
 <body>
@@ -45,13 +42,16 @@
         <div class="logo">
           <a href="index.html"><font face="Trocchi" size="6" color="black">Wendy Segura</font></a>
         </div>
+
         <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>
-          <ul class="nav-menu list-unstyled">
-            <li><a href="#portfolio" class="smoothScroll">Portfolio</a></li>
-            <li><a href="#writing" class="smoothScroll">Technical Writing</a></li>
-            <li><a href="resume/WendySegura.pdf" class="smoothScroll">CV</a></li>
-	    <li><a href="#about" class="smoothScroll">About</a></li>	  
-          </ul>
+
+        <ul class="nav-menu list-unstyled">
+          <li><a href="#portfolio" class="smoothScroll">Portfolio</a></li>
+          <li><a href="#writing" class="smoothScroll">Technical Writing</a></li>
+          <li><a href="resume/WendySegura.pdf">CV</a></li>
+          <li><a href="#about" class="smoothScroll">About</a></li>
+        </ul>
+
       </div>
     </div>
   </nav>
@@ -70,181 +70,147 @@
         <div class="col-md-12">
 
           <div class="portfolio-list">
-
             <ul class="nav list-unstyled" id="portfolio-flters">
-              <li class="filter filter-active" data-filter=".all">All</li>
-              <li class="filer"  data-filter=".linux">Linux</li>
-	      <li class="filer"  data-filter=".C">C</li>
-              <li class="filer"  data-filter=".datascience">Data Science</li>
-              <li class="filer"  data-filter=".blockchain">Blockchain</li>
-              <li class="filer"  data-filter=".unity">Unity</li>
-	      <li class="filer"  data-filter=".aws">AWS</li>
+              <!-- ✅ FIX: data-filter="*" + correct class="filter" -->
+              <li class="filter filter-active" data-filter="*">All</li>
+              <li class="filter" data-filter=".linux">Linux</li>
+              <li class="filter" data-filter=".C">C</li>
+              <li class="filter" data-filter=".datascience">Data Science</li>
+              <li class="filter" data-filter=".blockchain">Blockchain</li>
+              <li class="filter" data-filter=".unity">Unity</li>
+              <li class="filter" data-filter=".aws">AWS</li>
             </ul>
-
           </div>
 
-         <div class="portfolio-container">
+          <div class="portfolio-container">
 
+            <!-- ✅ FIX: No nested <a> tags. One image link for popup, one separate link for GitHub -->
             <div class="col-lg-4 col-md-6 portfolio-thumbnail all aws">
+              <p>Cloudformation - AWS Project</p>
               <a class="popup-img" href="images/portfolio/8.png">
-                <p>Cloudformation - AWS Project</p>
-                <img width="300" height="250" src="images/portfolio/8.png" alt="img">
-                <a href="https://github.com/wendysegura/AWS-Cloudformation">Download/Recreate</a>
+                <img width="300" height="250" src="images/portfolio/8.png" alt="Cloudformation - AWS Project">
               </a>
+              <p><a href="https://github.com/wendysegura/AWS-Cloudformation" target="_blank" rel="noopener noreferrer">Download/Recreate</a></p>
             </div>
-		
 
             <div class="col-lg-4 col-md-6 portfolio-thumbnail all aws">
+              <p>Blue/Green Deployment - Jenkins Project</p>
               <a class="popup-img" href="images/portfolio/9.png">
-                <p>Blue/Green Deployment - Jenkins Project</p>
-                <img width="300" height="250" src="images/portfolio/9.png" alt="img">
-                <a href="https://github.com/wendysegura/BlueGreenDeployment">Download/Recreate</a>
+                <img width="300" height="250" src="images/portfolio/9.png" alt="Blue/Green Deployment - Jenkins Project">
               </a>
+              <p><a href="https://github.com/wendysegura/BlueGreenDeployment" target="_blank" rel="noopener noreferrer">Download/Recreate</a></p>
             </div>
 
-	   
             <div class="col-lg-4 col-md-6 portfolio-thumbnail all aws">
+              <p>Microservices - Kubernetes Project</p>
               <a class="popup-img" href="images/portfolio/10.png">
-                <p>Microservices - Kubernetes Project</p>
-                <img width="300" height="250" src="images/portfolio/10.png" alt="img">
-                <a href="https://github.com/wendysegura/ml-microservice-kubernetes">Download/Recreate</a>
+                <img width="300" height="250" src="images/portfolio/10.png" alt="Microservices - Kubernetes Project">
               </a>
+              <p><a href="https://github.com/wendysegura/ml-microservice-kubernetes" target="_blank" rel="noopener noreferrer">Download/Recreate</a></p>
             </div>
-		 
+
             <div class="col-lg-4 col-md-6 portfolio-thumbnail all aws">
+              <p>S3 Static Website - AWS/Jenkins Project</p>
               <a class="popup-img" href="images/portfolio/11.png">
-                <p>S3 Static Website - AWS/Jenkins Project</p>
-                <img width="300" height="250" src="images/portfolio/11.png" alt="img">
-                <a href="https://github.com/wendysegura/static">Download/Recreate</a>
+                <img width="300" height="250" src="images/portfolio/11.png" alt="S3 Static Website - AWS/Jenkins Project">
               </a>
+              <p><a href="https://github.com/wendysegura/static" target="_blank" rel="noopener noreferrer">Download/Recreate</a></p>
             </div>
 
+            <div class="col-lg-4 col-md-6 portfolio-thumbnail all unity">
+              <p>PacMan - Unity C# Project</p>
+              <video width="300" height="250" controls>
+                <source src="pacman.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <p>Click play to view demo</p>
+            </div>
 
             <div class="col-lg-4 col-md-6 portfolio-thumbnail all unity">
-	       <p>PacMan - Unity C# Project</p>
-	       <video width="300" height="250" controls>
-  		<source src="pacman.mp4" type="video/mp4">
-		Your browser does not support the video tag.
-	       </video>
-	       <a>Click Image To Play Demo</a> 
-            </div>
-     
-            <div class="col-lg-4 col-md-6 portfolio-thumbnail all unity">
-                <p>Maze - Unity C# Project</p>
-		<video width="300" height="250" controls>
+              <p>Maze - Unity C# Project</p>
+              <video width="300" height="250" controls>
                 <source src="maze.mp4" type="video/mp4">
                 Your browser does not support the video tag.
-               </video>
-               <a>Click Image To Play Demo</a>
+              </video>
+              <p>Click play to view demo</p>
             </div>
 
-
             <div class="col-lg-4 col-md-6 portfolio-thumbnail all C">
+              <p>Turtle Shell - Recreation of Shell</p>
               <a class="popup-img" href="images/portfolio/3.png">
-                <p>Turtle Shell - Recreation of Shell</p>
-                <img src="images/portfolio/3.png" alt="img">
-                <a href="https://github.com/wendysegura/simple_shell">Download/Recreate</a>
+                <img src="images/portfolio/3.png" alt="Turtle Shell - Recreation of Shell">
               </a>
+              <p><a href="https://github.com/wendysegura/simple_shell" target="_blank" rel="noopener noreferrer">Download/Recreate</a></p>
             </div>
 
             <div class="col-lg-4 col-md-6 portfolio-thumbnail all linux">
+              <p>Linux Operating System</p>
               <a class="popup-img" href="images/portfolio/1.png">
-                <p>Linux Operating System</p>
-                <img src="images/portfolio/1.png" alt="img">
-                <a href="https://github.com/wendysegura/Simple_OS/blob/master/SETUP.md">Download/Recreate</a>
+                <img src="images/portfolio/1.png" alt="Linux Operating System">
               </a>
+              <p><a href="https://github.com/wendysegura/Simple_OS/blob/master/SETUP.md" target="_blank" rel="noopener noreferrer">Download/Recreate</a></p>
             </div>
 
             <div class="col-lg-4 col-md-6 portfolio-thumbnail all blockchain">
+              <p>SmartLease - Blockchain Project</p>
               <a class="popup-img" href="images/portfolio/2.png">
-                <p>SmartLease - Blockchain Project</p>
-                <img src="images/portfolio/2.png" alt="img">
-                <a href="https://github.com/SmartLease/Ethereum">View Demo</a>
+                <img src="images/portfolio/2.png" alt="SmartLease - Blockchain Project">
               </a>
-            </div>
-	    
-            <div class="col-lg-4 col-md-6 portfolio-thumbnail all datascience">
-              <a class="popup-img" href="images/portfolio/7.png">
-                <p>Crime Forecasting - Data Science</p>
-                <img height="300" width="2500" src="images/portfolio/7.png" alt="img">
-                <a href="https://github.com/wendysegura/Portland_Forecasting/blob/master/CSV_Police_Files/Random%20Forest%202012-2016.ipynb">View Jupyter Notebook File</a> 
-              </a>
+              <p><a href="https://github.com/SmartLease/Ethereum" target="_blank" rel="noopener noreferrer">View Demo</a></p>
             </div>
 
-          </div>
+            <div class="col-lg-4 col-md-6 portfolio-thumbnail all datascience">
+              <p>Crime Forecasting - Data Science</p>
+              <a class="popup-img" href="images/portfolio/7.png">
+                <img height="300" width="300" src="images/portfolio/7.png" alt="Crime Forecasting - Data Science">
+              </a>
+              <p><a href="https://github.com/wendysegura/Portland_Forecasting/blob/master/CSV_Police_Files/Random%20Forest%202012-2016.ipynb" target="_blank" rel="noopener noreferrer">View Jupyter Notebook File</a></p>
+            </div>
+
+          </div><!-- /portfolio-container -->
         </div>
       </div>
     </div>
 
   </div>
   <!-- End section portfolio -->
-  
+
   <!-- start section writing -->
-<div id="writing" class="text-center paddsection">
-  <div class="container">
-    <div class="section-title text-center">
-      <h2>My Technical Writing</h2>
-    </div>
-
-    <!-- Article 1 -->
+  <div id="writing" class="text-center paddsection">
     <div class="container">
       <div class="section-title text-center">
-        <iframe 
-          width="800" 
-          height="700"
-          style="border: none;"
-          src="https://wendysegura.github.io/auditing-iam-users-aws-sweetcode.html">
-        </iframe>
+        <h2>My Technical Writing</h2>
       </div>
-    </div>
 
-    <!-- Article 2 -->
-    <div class="container">
       <div class="section-title text-center">
-        <iframe 
-          width="800" 
-          height="600"
-          style="border: none;"
-          src="https://wendysegura.github.io/how-use-truffle-hog-git-secrets.html">
-        </iframe>
+        <iframe width="800" height="700" style="border: none;"
+          src="https://wendysegura.github.io/auditing-iam-users-aws-sweetcode.html"></iframe>
       </div>
-    </div>
 
-    <!-- Article 3 -->
-    <div class="container">
       <div class="section-title text-center">
-        <iframe 
-          width="800" 
-          height="600"
-          style="border: none;"
-          src="https://wendysegura.github.io/launch-nessus-ec2.html">
-        </iframe>
+        <iframe width="800" height="600" style="border: none;"
+          src="https://wendysegura.github.io/how-use-truffle-hog-git-secrets.html"></iframe>
+      </div>
+
+      <div class="section-title text-center">
+        <iframe width="800" height="600" style="border: none;"
+          src="https://wendysegura.github.io/launch-nessus-ec2.html"></iframe>
+      </div>
+
+      <div class="section-title text-center">
+        <h3>Hardlink vs Symlink</h3>
+        <iframe width="800" height="900" style="border:none;"
+          src="https://wendysegura.github.io/hardlink-vs-symlink.html"></iframe>
       </div>
     </div>
-	<!-- Article 4 -->
-	<div class="container">
-	  <div class="section-title text-center">
-	    <h3>Hardlink vs Symlink</h3>
-	    <iframe 
-	      width="800" 
-	      height="900"
-	      style="border:none;"
-	      src="https://wendysegura.github.io/hardlink-vs-symlink.html">
-	    </iframe>
-	  </div>
-	</div>
-
   </div>
-</div>
-<!-- End section writing -->
+  <!-- End section writing -->
 
-	  
-<!-- start section about me -->
+  <!-- start section about me -->
   <div id="about" class="paddsection">
     <div class="container">
       <div class="row justify-content-between">
-
-        <div class="col-lg-4 ">
+        <div class="col-lg-4">
           <div class="div-img-bg">
             <div class="about-img">
               <img src="images/me.jpg" class="img-responsive" alt="me">
@@ -254,28 +220,31 @@
 
         <div class="col-lg-7">
           <div class="about-descr">
-            <p class="p-heading"> Hi I'm Wendy Security Engineer, and OWASP Bay Area Lead Chapter. </p>
-            <p class="separator"> In my pastime I do Bounty Hunting Sundays, basically a day dedicated to getting together with friends and trying to find vulnerabilities. Currently, I am working on getting my Masters from Georgia Institute of Technology in Cybersecurity. To get in touch click on any of the social icons below.</p>
-          </div>  
-         </div>	
+            <p class="p-heading">Hi I'm Wendy Security Engineer, and OWASP Bay Area Lead Chapter.</p>
+            <p class="separator">
+              In my pastime I do Bounty Hunting Sundays, basically a day dedicated to getting together with friends and trying to find vulnerabilities.
+              Currently, I am working on getting my Masters from Georgia Institute of Technology in Cybersecurity.
+              To get in touch click on any of the social icons below.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-<div id="footer" class="text-center">
+  <div id="footer" class="text-center">
     <div class="container">
       <div class="socials-media text-center">
-	      <h3>Contact</h3>
+        <h3>Contact</h3>
         <ul class="list-unstyled">
-          <li><a href="https://www.linkedin.com/in/wendy-segura/"><i class="ion-social-linkedin"></i></a></li>
-          <li><a href="https://github.com/wendysegura"><i class="ion-social-github"></i></a></li>
-          <li><a href="https://twitter.com/gwenevere05"><i class="ion-social-twitter"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/wendy-segura/" target="_blank" rel="noopener noreferrer"><i class="ion-social-linkedin"></i></a></li>
+          <li><a href="https://github.com/wendysegura" target="_blank" rel="noopener noreferrer"><i class="ion-social-github"></i></a></li>
+          <li><a href="https://twitter.com/gwenevere05" target="_blank" rel="noopener noreferrer"><i class="ion-social-twitter"></i></a></li>
         </ul>
       </div>
-	<p>&copy; Copyrights Wendy Segura. All rights reserved.</p>
+      <p>&copy; Copyrights Wendy Segura. All rights reserved.</p>
     </div>
   </div>
-  <!-- End section footer -->
 
   <!-- JavaScript Libraries -->
   <script src="lib/jquery/jquery.min.js"></script>
@@ -293,14 +262,4 @@
   <script src="js/main.js"></script>
 
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
