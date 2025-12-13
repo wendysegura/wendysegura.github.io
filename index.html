@@ -30,23 +30,6 @@
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="images/favicon.png">
-
-  <!-- Optional: Keep/remove if you still use .project-* classes somewhere -->
-  <style>
-    .project-title { font-weight: 600; margin-bottom: 10px; font-size: 16px; }
-    .project-media { margin-bottom: 12px; }
-    .project-media img,
-    .project-media video {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 10px;
-      display: block;
-    }
-    .project-description { font-size: 14px; line-height: 1.45; min-height: 92px; margin-bottom: 10px; }
-    .project-links a { font-weight: 500; }
-    .project-links { margin-bottom: 0; }
-  </style>
 </head>
 
 <body>
@@ -88,6 +71,7 @@
 
           <div class="portfolio-list">
             <ul class="nav list-unstyled" id="portfolio-flters">
+              <!-- ✅ FIX: data-filter="*" + correct class="filter" -->
               <li class="filter filter-active" data-filter="*">All</li>
               <li class="filter" data-filter=".linux">Linux</li>
               <li class="filter" data-filter=".C">C</li>
@@ -98,122 +82,203 @@
             </ul>
           </div>
 
-          <!-- ✅ IMPORTANT: portfolio-container stays INSIDE the portfolio section -->
-          <div class="portfolio-container row">
+          <div class="portfolio-container">
 
-            <!-- AWS CloudFormation -->
-            <div class="col-lg-4 col-md-6 portfolio-item all aws">
-              <div class="card h-100 shadow-sm">
-                <a class="popup-img" href="images/portfolio/8.png">
-                  <img src="images/portfolio/8.png" class="card-img-top" alt="AWS CloudFormation – Scalable Web App">
-                </a>
-                <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">AWS CloudFormation – Scalable Web App</h5>
-                  <p class="card-text">
-                    This project uses AWS CloudFormation to provision a highly available web application by deploying an auto-scaling group behind an application load balancer in private subnets.
-                  </p>
-                  <div class="mt-auto">
-                    <a href="https://github.com/wendysegura/AWS-Cloudformation" target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark btn-sm">
-                      View on GitHub
-                    </a>
-                  </div>
-                </div>
-              </div>
+            <!-- ✅ FIX: No nested <a> tags. One image link for popup, one separate link for GitHub -->
+            <div class="col-lg-4 col-md-6 portfolio-thumbnail all aws">
+              <p>Cloudformation - AWS Project</p>
+              <a class="popup-img" href="images/portfolio/8.png">
+                <img width="300" height="250" src="images/portfolio/8.png" alt="Cloudformation - AWS Project">
+              </a>
+              <p>This project uses AWS CloudFormation to provision a highly available web application by deploying an auto-scaling group 
+                behind an application load balancer in private subnets, complete with health checks, security controls, and a publicly accessible endpoint.</p>
+              <p><a href="https://github.com/wendysegura/AWS-Cloudformation" target="_blank" rel="noopener noreferrer">Download/Recreate</a></p>
             </div>
 
-            <!-- Blue/Green Deployment -->
-            <div class="col-lg-4 col-md-6 portfolio-item all aws">
-              <div class="card h-100 shadow-sm">
-                <a class="popup-img" href="images/portfolio/9.png">
-                  <img src="images/portfolio/9.png" class="card-img-top" alt="Blue–Green Deployment Pipeline">
-                </a>
-                <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">Blue–Green Deployment Pipeline</h5>
-                  <p class="card-text">
-                    Built a Jenkins-driven blue–green deployment pipeline using Docker, Kubernetes, and AWS EKS to enable zero-downtime releases with fast rollback.
-                  </p>
-                  <div class="mt-auto">
-                    <a href="https://github.com/wendysegura/BlueGreenDeployment" target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark btn-sm">
-                      View on GitHub
-                    </a>
-                  </div>
-                </div>
-              </div>
+            <div class="col-lg-4 col-md-6 portfolio-thumbnail all aws">
+              <p>Blue/Green Deployment - Jenkins Project</p>
+              <a class="popup-img" href="images/portfolio/9.png">
+                <img width="300" height="250" src="images/portfolio/9.png" alt="Blue/Green Deployment - Jenkins Project">
+              </a>
+              <p>This project demonstrates a blue-green deployment pipeline using Jenkins, Docker, and Kubernetes on AWS EKS to enable zero-downtime application 
+                updates with fast rollback by seamlessly switching traffic between production environments via Route 53.</p>
+              <p><a href="https://github.com/wendysegura/BlueGreenDeployment" target="_blank" rel="noopener noreferrer">Download/Recreate</a></p>
             </div>
 
-            <!-- ML Microservice Kubernetes -->
-            <div class="col-lg-4 col-md-6 portfolio-item all aws">
-              <div class="card h-100 shadow-sm">
-                <a class="popup-img" href="images/portfolio/10.png">
-                  <img src="images/portfolio/10.png" class="card-img-top" alt="ML Microservice – Kubernetes">
-                </a>
-                <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">ML Microservice – Kubernetes</h5>
-                  <p class="card-text">
-                    Operationalized a pre-trained scikit-learn model by containerizing a Flask microservice with Docker and deploying it to Kubernetes with CI testing via CircleCI.
-                  </p>
-                  <div class="mt-auto">
-                    <a href="https://github.com/wendysegura/ml-microservice-kubernetes" target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark btn-sm">
-                      View on GitHub
-                    </a>
-                  </div>
-                </div>
-              </div>
+            <div class="col-lg-4 col-md-6 portfolio-thumbnail all aws">
+              <p>Microservices - Kubernetes Project</p>
+              <a class="popup-img" href="images/portfolio/10.png">
+                <img width="300" height="250" src="images/portfolio/10.png" alt="Microservices - Kubernetes Project">
+              </a>
+              <p>This project operationalizes a pre-trained scikit-learn housing price model by 
+                containerizing a Flask microservice with Docker and deploying it to Kubernetes with CI testing via CircleCI.</p>
+              <p><a href="https://github.com/wendysegura/ml-microservice-kubernetes" target="_blank" rel="noopener noreferrer">Download/Recreate</a></p>
             </div>
 
-            <!-- Jenkins Pipeline – S3 Static Website -->
-            <div class="col-lg-4 col-md-6 portfolio-item all aws">
-              <div class="card h-100 shadow-sm">
-                <a class="popup-img" href="images/portfolio/11.png">
-                  <img src="images/portfolio/11.png" class="card-img-top" alt="Jenkins Pipeline – S3 Static Website">
-                </a>
-                <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">Jenkins Pipeline – S3 Static Website</h5>
-                  <p class="card-text">
-                    Configured Jenkins on AWS and built a CI/CD pipeline to automate deployment of a static website to Amazon S3 using GitHub integration.
-                  </p>
-                  <div class="mt-auto">
-                    <a href="https://github.com/wendysegura/static" target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark btn-sm">
-                      View on GitHub
-                    </a>
-                  </div>
-                </div>
-              </div>
+            <div class="col-lg-4 col-md-6 portfolio-thumbnail all aws">
+              <p>S3 Static Website - AWS/Jenkins Project</p>
+              <a class="popup-img" href="images/portfolio/11.png">
+                <img width="300" height="250" src="images/portfolio/11.png" alt="S3 Static Website - AWS/Jenkins Project">
+              </a>
+              <p>This project builds a Jenkins CI/CD pipeline on AWS to automate the deployment of a static website to 
+                Amazon S3 using EC2-hosted Jenkins and GitHub integration.</p>
+              <p><a href="https://github.com/wendysegura/static" target="_blank" rel="noopener noreferrer">Download/Recreate</a></p>
             </div>
 
-            <!-- Pac-Man – Unity -->
-            <div class="col-lg-4 col-md-6 portfolio-item all unity">
-              <div class="card h-100 shadow-sm">
-                <div class="ratio ratio-16x9">
-                  <video controls>
-                    <source src="pacman.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-                <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">Pac-Man – Unity (C#)</h5>
-                  <p class="card-text">
-                    Built a Pac-Man–style game in Unity using C#, applying object-oriented design, state management, and basic AI behaviors.
-                  </p>
-                  <div class="mt-auto">
-                    <a href="https://github.com/wendysegura/Unity_Games" target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark btn-sm">
-                      View on GitHub
-                    </a>
-                  </div>
-                </div>
-              </div>
+            <div class="col-lg-4 col-md-6 portfolio-thumbnail all unity">
+              <p>PacMan - Unity C# Project</p>
+              <video width="300" height="250" controls>
+                <source src="pacman.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <p>Built an interactive Pac-Man–style application in Unity using C#, 
+                applying object-oriented design, event-driven logic, and state management to implement core gameplay systems.</p>
+              <p>Click play to view demo</p>
             </div>
 
-            <!-- Maze – Unity -->
-            <div class="col-lg-4 col-md-6 portfolio-item all unity">
-              <div class="card h-100 shadow-sm">
-                <div class="ratio ratio-16x9">
-                  <video controls>
-                    <source src="maze.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-                <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">Maze – Unity (C#)</h5>
-                  <p class="card-text">
-                    Implemented a 3D maze game in Unity with C#, demonstrating input han
+            <div class="col-lg-4 col-md-6 portfolio-thumbnail all unity">
+              <p>Maze - Unity C# Project</p>
+              <video width="300" height="250" controls>
+                <source src="maze.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <p>This project implements a 3D maze game in Unity with C#, 
+                applying object-oriented design and player movement logic to navigate and solve the maze environment.</p>
+              <p>Click play to view demo</p>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-thumbnail all C">
+              <p>Turtle Shell - Recreation of Shell</p>
+              <a class="popup-img" href="images/portfolio/3.png">
+                <img src="images/portfolio/3.png" alt="Turtle Shell - Recreation of Shell">
+              </a>
+              <p>This project implements a simple UNIX command-line shell in C, demonstrating parsing, process control, and execution of system commands.</p>
+              <p><a href="https://github.com/wendysegura/simple_shell" target="_blank" rel="noopener noreferrer">Download/Recreate</a></p>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-thumbnail all linux">
+              <p>Linux Operating System</p>
+              <a class="popup-img" href="images/portfolio/1.png">
+                <img src="images/portfolio/1.png" alt="Linux Operating System">
+              </a>
+              <p>Developed a basic operating system in C and assembly with custom bootloader and kernel, 
+                demonstrating low-level system programming and OS concepts.</p>
+              <p><a href="https://github.com/wendysegura/Simple_OS/blob/master/SETUP.md" target="_blank" rel="noopener noreferrer">Download/Recreate</a></p>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-thumbnail all blockchain">
+              <p>SmartLease - Blockchain Project</p>
+              <a class="popup-img" href="images/portfolio/2.png">
+                <img src="images/portfolio/2.png" alt="SmartLease - Blockchain Project">
+              </a>
+              <p>Built a decentralized lease contract on the Ethereum blockchain that encodes rental agreements and 
+                interactions between landlords and tenants using Solidity and blockchain tools. </p>
+              <p><a href="https://github.com/SmartLease/Ethereum" target="_blank" rel="noopener noreferrer">View Demo</a></p>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-thumbnail all datascience">
+              <p>Crime Forecasting - Data Science</p>
+              <a class="popup-img" href="images/portfolio/7.png">
+                <img height="300" width="300" src="images/portfolio/7.png" alt="Crime Forecasting - Data Science">
+              </a>
+              <p>eveloped a crime prediction model for Portland using Random Forest classification 
+                and historical datasets, with exploratory analysis and evaluation provided in Jupyter.</p>
+              <p><a href="https://github.com/wendysegura/Portland_Forecasting/blob/master/CSV_Police_Files/Random%20Forest%202012-2016.ipynb" target="_blank" rel="noopener noreferrer">View Jupyter Notebook File</a></p>
+            </div>
+
+          </div><!-- /portfolio-container -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- End section portfolio -->
+
+  <!-- start section writing -->
+  <div id="writing" class="text-center paddsection">
+    <div class="container">
+      <div class="section-title text-center">
+        <h2>My Technical Writing</h2>
+      </div>
+
+      <div class="section-title text-center">
+        <iframe width="800" height="700" style="border: none;"
+          src="https://wendysegura.github.io/auditing-iam-users-aws-sweetcode.html"></iframe>
+      </div>
+
+      <div class="section-title text-center">
+        <iframe width="800" height="600" style="border: none;"
+          src="https://wendysegura.github.io/how-use-truffle-hog-git-secrets.html"></iframe>
+      </div>
+
+      <div class="section-title text-center">
+        <iframe width="800" height="600" style="border: none;"
+          src="https://wendysegura.github.io/launch-nessus-ec2.html"></iframe>
+      </div>
+
+      <div class="section-title text-center">
+        <h3>Hardlink vs Symlink</h3>
+        <iframe width="800" height="900" style="border:none;"
+          src="https://wendysegura.github.io/hardlink-vs-symlink.html"></iframe>
+      </div>
+    </div>
+  </div>
+  <!-- End section writing -->
+
+  <!-- start section about me -->
+  <div id="about" class="paddsection">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-lg-4">
+          <div class="div-img-bg">
+            <div class="about-img">
+              <img src="images/me.jpg" class="img-responsive" alt="me">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="about-descr">
+            <p class="p-heading">Hi I'm Wendy Security Engineer, and OWASP Bay Area Lead Chapter.</p>
+            <p class="separator">
+              In my pastime I do Bounty Hunting Sundays, basically a day dedicated to getting together with friends and trying to find vulnerabilities.
+              Currently, I am working on getting my Masters from Georgia Institute of Technology in Cybersecurity.
+              To get in touch click on any of the social icons below.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer" class="text-center">
+    <div class="container">
+      <div class="socials-media text-center">
+        <h3>Contact</h3>
+        <ul class="list-unstyled">
+          <li><a href="https://www.linkedin.com/in/wendy-segura/" target="_blank" rel="noopener noreferrer"><i class="ion-social-linkedin"></i></a></li>
+          <li><a href="https://github.com/wendysegura" target="_blank" rel="noopener noreferrer"><i class="ion-social-github"></i></a></li>
+          <li><a href="https://twitter.com/gwenevere05" target="_blank" rel="noopener noreferrer"><i class="ion-social-twitter"></i></a></li>
+        </ul>
+      </div>
+      <p>&copy; Copyrights Wendy Segura. All rights reserved.</p>
+    </div>
+  </div>
+
+  <!-- JavaScript Libraries -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/typed/typed.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/magnific-popup/magnific-popup.min.js"></script>
+  <script src="lib/isotope/isotope.pkgd.min.js"></script>
+
+  <!-- Contact Form JavaScript File -->
+  <script src="contactform/contactform.js"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>
